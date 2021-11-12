@@ -5,9 +5,15 @@
     <script>
         microsoftTeams.initialize();
         microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
-                saveEvent.notifySuccess();
+            microsoftTeams.settings.setSettings({
+                websiteUrl: "https://www.eopus.de",
+                contentUrl: "https://www.eopus.de",
+                entityId: "grayIconTab",
+                suggestedDisplayName: "MyNewTab"
             });
+            saveEvent.notifySuccess();
+        });
         microsoftTeams.settings.setValidityState(true);
     </script>
-    Hiho
+    Huhu
 </body>
