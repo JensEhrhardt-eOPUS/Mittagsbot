@@ -4,6 +4,9 @@
 <body>
     <script>
         microsoftTeams.initialize();
+        microsoftTeams.settings.registerOnSaveHandler((saveEvent) => {
+                saveEvent.notifySuccess();
+            });
         microsoftTeams.settings.setValidityState(true);
     </script>
     Huhu
