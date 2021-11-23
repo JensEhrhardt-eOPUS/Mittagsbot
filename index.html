@@ -1,5 +1,6 @@
 <head>
     <script src='https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js'></script>
+    <script src="https://unpkg.com/adaptivecards-templating/dist/adaptivecards-templating.min.js"></script>
     <script src="https://unpkg.com/adaptivecards/dist/adaptivecards.min.js"></script>
 </head>
 <body>
@@ -24,6 +25,9 @@
                     adaptiveCard.parse({
                         "type": "AdaptiveCard",
                         "version": "1.0",
+                        "$data": {
+                            "menu": data
+                        },
                         "body": [
                             {
                                 "type": "Image",
@@ -31,7 +35,7 @@
                             },
                             {
                                 "type": "TextBlock",
-                                "text": "Hello **Adaptive Cards!**"
+                                "text": "Hello ${menu[0].title}"
                             }
                         ],
                         "actions": [
