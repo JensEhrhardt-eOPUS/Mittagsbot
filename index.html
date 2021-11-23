@@ -14,6 +14,13 @@
             saveEvent.notifySuccess();
         });
         microsoftTeams.settings.setValidityState(true);
+        
+        fetch('https://shop.meyer-menue.de/api/v1/menue/MDI5ODM3/year/2021/week/47')
+            .then(response => response.json())
+            .then(data => 
+                {
+                    document.appendChild(document.createTextNode(data));
+                });
     </script>
     Hoho
 </body>
