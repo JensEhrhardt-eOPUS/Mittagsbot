@@ -22,7 +22,7 @@
             .then(data => 
                 {
                     var adaptiveCard = new AdaptiveCards.AdaptiveCard();
-                    adaptiveCard.parse({
+                    adaptiveCard.parse(new ACData.Template({
                         "type": "AdaptiveCard",
                         "version": "1.0",
                         "$data": {
@@ -50,7 +50,7 @@
                                 "url": "http://github.com/Microsoft/AdaptiveCards"
                             }
                         ]
-                    });
+                    }).expand({$root:{}}));
                     document.body.appendChild(adaptiveCard.render());
                 });
     </script>
