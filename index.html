@@ -30,12 +30,18 @@
                         },
                         "body": [
                             {
-                                "type": "Image",
-                                "url": "https://shop.meyer-menue.de/assets/image/${menu[0].menuimage}"
-                            },
-                            {
-                                "type": "TextBlock",
-                                "text": "Hello ${menu[0].title}"
+                                "type": "Container",
+                                "$data": data,
+                                "items": [ 
+                                    {
+                                        "type": "Image",
+                                        "url": "https://shop.meyer-menue.de/assets/image/${menuimage}"
+                                    },
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "Hello ${title}"
+                                    }
+                                ]
                             }
                         ],
                         "actions": [
