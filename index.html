@@ -51,17 +51,18 @@
                                         "items": [
                                             {
                                                 "type": "TextBlock",
-                                                "text": "New TextBlock",
+                                                "text": "${title}",
                                                 "wrap": true,
                                                 "size": "Large",
                                                 "weight": "Bolder"
                                             },
                                             {
-                                                "type": "Image"
+                                                "type": "Image",
+                                                "url": "https://shop.meyer-menue.de/assets/image/${menuimage}"
                                             },
                                             {
                                                 "type": "TextBlock",
-                                                "text": "New TextBlock",
+                                                "text": "${description}",
                                                 "wrap": true
                                             },
                                             {
@@ -91,5 +92,5 @@
                     document.body.appendChild(adaptiveCard.render());
                 });
     </script>
-    Hoho
+    Hiho
 </body>
