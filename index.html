@@ -40,6 +40,39 @@
                                         "text": "Hello ${title}"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "ColumnSet",
+                                "columns": [
+                                    {
+                                        "type": "Column",
+                                        "$data": data.filter(x => x.day==tomorrow),
+                                        "width": "stretch",
+                                        "items": [
+                                            {
+                                                "type": "TextBlock",
+                                                "text": "New TextBlock",
+                                                "wrap": true,
+                                                "size": "Large",
+                                                "weight": "Bolder"
+                                            },
+                                            {
+                                                "type": "Image"
+                                            },
+                                            {
+                                                "type": "TextBlock",
+                                                "text": "New TextBlock",
+                                                "wrap": true
+                                            },
+                                            {
+                                                "type": "Input.Number",
+                                                "placeholder": "Placeholder text",
+                                                "value": 0,
+                                                "min": 0
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ],
                         "actions": [
