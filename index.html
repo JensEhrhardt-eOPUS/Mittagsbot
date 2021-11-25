@@ -28,20 +28,6 @@
                         "version": "1.0",
                         "body": [
                             {
-                                "type": "Container",
-                                "$data": data.filter(x => x.day==tomorrow),
-                                "items": [ 
-                                    {
-                                        "type": "Image",
-                                        "url": "https://shop.meyer-menue.de/assets/image/${menuimage}"
-                                    },
-                                    {
-                                        "type": "TextBlock",
-                                        "text": "Hello ${title}"
-                                    }
-                                ]
-                            },
-                            {
                                 "type": "ColumnSet",
                                 "columns": [
                                     {
@@ -92,5 +78,5 @@
                     document.body.appendChild(adaptiveCard.render());
                 });
     </script>
-    Hiho
+    Hoho
 </body>
