@@ -26,13 +26,10 @@
                     adaptiveCard.parse(new ACData.Template({
                         "type": "AdaptiveCard",
                         "version": "1.0",
-                        "$data": {
-                            "menu": data.filter(x => x.day==tomorrow)
-                        },
                         "body": [
                             {
                                 "type": "Container",
-                                "$data": data,
+                                "$data": data.filter(x => x.day==tomorrow),
                                 "items": [ 
                                     {
                                         "type": "Image",
@@ -61,5 +58,5 @@
                     document.body.appendChild(adaptiveCard.render());
                 });
     </script>
-    Hiho
+    Hoho
 </body>
