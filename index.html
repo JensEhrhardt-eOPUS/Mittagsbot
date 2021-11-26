@@ -28,52 +28,64 @@
                         "version": "1.0",
                         "body": [
                             {
-                                "type": "Container",
-                                "$data": data.filter(x => x.day==tomorrow),
-                                "style": "emphasis",
-                                "items": [
+                                "type": "ColumnSet",
+                                "columns": [
                                     {
-                                        "type": "ColumnSet",
-                                        "columns": [
+                                        "type": "Column",
+                                        "$data": [{"mod":1}, {"mod":0}]
+                                        "width": "500px",
+                                        "items": [
                                             {
-                                                "type": "Column",
-                                                "width": "250px",
+                                                "type": "Container",
+                                                "$data": data.filter(x => x.day==tomorrow && x.planpos % 2 == "${mod}"),
+                                                "style": "emphasis",
                                                 "items": [
                                                     {
-                                                        "type": "Image",
-                                                        "url": "https://shop.meyer-menue.de/assets/image/${menuimage}"
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "type": "Column",
-                                                "width": "250px",
-                                                "items": [
-                                                    {
-                                                        "type": "TextBlock",
-                                                        "text": "${title}",
-                                                        "wrap": true,
-                                                        "size": "Large",
-                                                        "weight": "Bolder"
-                                                    },
-                                                    {
-                                                        "type": "TextBlock",
-                                                        "text": "${menulinie}",
-                                                        "wrap": true,
-                                                        "size": "Small",
-                                                        "weight": "Lighter",
-                                                        "spacing": "None"
-                                                    },
-                                                    {
-                                                        "type": "TextBlock",
-                                                        "text": "${description}",
-                                                        "wrap": true,
-                                                        "spacing": "None"
-                                                    },
-                                                    {
-                                                        "type": "Input.Number",
-                                                        "value": 0,
-                                                        "min": 0
+                                                        "type": "ColumnSet",
+                                                        "columns": [
+                                                            {
+                                                                "type": "Column",
+                                                                "width": "250px",
+                                                                "items": [
+                                                                    {
+                                                                        "type": "Image",
+                                                                        "url": "https://shop.meyer-menue.de/assets/image/${menuimage}"
+                                                                    }
+                                                                ]
+                                                            },
+                                                            {
+                                                                "type": "Column",
+                                                                "width": "250px",
+                                                                "items": [
+                                                                    {
+                                                                        "type": "TextBlock",
+                                                                        "text": "${title}",
+                                                                        "wrap": true,
+                                                                        "size": "Large",
+                                                                        "weight": "Bolder"
+                                                                    },
+                                                                    {
+                                                                        "type": "TextBlock",
+                                                                        "text": "${menulinie}",
+                                                                        "wrap": true,
+                                                                        "size": "Small",
+                                                                        "weight": "Lighter",
+                                                                        "spacing": "None"
+                                                                    },
+                                                                    {
+                                                                        "type": "TextBlock",
+                                                                        "text": "${description}",
+                                                                        "wrap": true,
+                                                                        "spacing": "None"
+                                                                    },
+                                                                    {
+                                                                        "type": "Input.Number",
+                                                                        "value": 0,
+                                                                        "min": 0
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
                                                     }
                                                 ]
                                             }
@@ -93,5 +105,5 @@
                     document.body.appendChild(adaptiveCard.render());
                 });
     </script>
-    Hiho
+    Hoho
 </body>
