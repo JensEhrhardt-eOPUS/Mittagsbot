@@ -21,7 +21,7 @@
             .then(response => response.json())
             .then(data => 
                 {
-                    var tomorrow = new Date().getDay()
+                    var tomorrow = new Date().getDay()-1;
                     var adaptiveCard = new AdaptiveCards.AdaptiveCard();
                     adaptiveCard.parse(new ACData.Template({
                         "type": "AdaptiveCard",
@@ -58,9 +58,10 @@
                                                     },
                                                     {
                                                         "type": "TextBlock",
-                                                        "text": "${menuline}",
+                                                        "text": "${menulinie}",
                                                         "wrap": true,
-                                                        "size": "Small"
+                                                        "size": "Small",
+                                                        "weight": "Lighter"
                                                     },
                                                     {
                                                         "type": "TextBlock",
@@ -84,16 +85,11 @@
                                 "type": "Action.OpenUrl",
                                 "title": "Learn more",
                                 "url": "http://adaptivecards.io"
-                            },
-                            {
-                                "type": "Action.OpenUrl",
-                                "title": "GitHub",
-                                "url": "http://github.com/Microsoft/AdaptiveCards"
                             }
                         ]
                     }).expand({$root:{}}));
                     document.body.appendChild(adaptiveCard.render());
                 });
     </script>
-    Hoho
+    Hiho
 </body>
