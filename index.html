@@ -37,18 +37,17 @@
                                         "columns": [
                                             {
                                                 "type": "Column",
-                                                "width": "auto",
+                                                "width": "250px",
                                                 "items": [
                                                     {
                                                         "type": "Image",
-                                                        "width": "250px",
                                                         "url": "https://shop.meyer-menue.de/assets/image/${menuimage}"
                                                     }
                                                 ]
                                             },
                                             {
                                                 "type": "Column",
-                                                "width": "auto",
+                                                "width": "250px",
                                                 "items": [
                                                     {
                                                         "type": "TextBlock",
@@ -62,12 +61,14 @@
                                                         "text": "${menulinie}",
                                                         "wrap": true,
                                                         "size": "Small",
-                                                        "weight": "Lighter"
+                                                        "weight": "Lighter",
+                                                        "spacing": "None"
                                                     },
                                                     {
                                                         "type": "TextBlock",
                                                         "text": "${description}",
-                                                        "wrap": true
+                                                        "wrap": true,
+                                                        "spacing": "None"
                                                     },
                                                     {
                                                         "type": "Input.Number",
@@ -92,5 +93,5 @@
                     document.body.appendChild(adaptiveCard.render());
                 });
     </script>
-    Hoho
+    Hiho
 </body>
