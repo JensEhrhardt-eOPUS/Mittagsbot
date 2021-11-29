@@ -21,7 +21,7 @@
             .then(response => response.json())
             .then(data => 
                 {
-                    var tomorrow = new Date().getDay()-1;
+                    var tomorrow = new Date().getDay();
                     var adaptiveCard = new AdaptiveCards.AdaptiveCard();
                     adaptiveCard.parse(new ACData.Template({
                         "type": "AdaptiveCard",
