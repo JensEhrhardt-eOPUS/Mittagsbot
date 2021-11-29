@@ -17,7 +17,7 @@
         });
         microsoftTeams.settings.setValidityState(true);*/
         
-        fetch('https://shop.meyer-menue.de/api/v1/menue/MDI5ODM3/year/2021/week/47')
+        fetch('https://shop.meyer-menue.de/api/v1/menue/MDI5ODM3/year/2021/week/48')
             .then(response => response.json())
             .then(data => 
                 {
@@ -32,12 +32,15 @@
                                 "columns": [
                                     {
                                         "type": "Column",
-                                        "$data": [{"mod":1}, {"mod":0}],
+                                        "$data": [
+                                            {"data":data.filter(x => x.day==tomorrow && (x.planpos % 2) == 1)}, 
+                                            {"data":data.filter(x => x.day==tomorrow && (x.planpos % 2) == 0)}
+                                        ],
                                         "width": "560px",
                                         "items": [
                                             {
                                                 "type": "Container",
-                                                "$data": data.filter(x => x.day==tomorrow && (x.planpos % 2) == "${mod}"),
+                                                "$data": "${data}",
                                                 "style": "emphasis",
                                                 "items": [
                                                     {
@@ -105,5 +108,5 @@
                     document.body.appendChild(adaptiveCard.render());
                 });
     </script>
-    Hoho
+    Hiho
 </body>
