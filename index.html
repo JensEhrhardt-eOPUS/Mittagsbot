@@ -22,7 +22,7 @@
             .then(data => 
                 {
                     for(var item of data)
-                        item.description = item.description.replace(/{.*}/, '');
+                        item.description = item.description?.replace(/{.*}/, '');
                     var tomorrow = new Date().getDay();
                     var adaptiveCard = new AdaptiveCards.AdaptiveCard();
                     adaptiveCard.parse(new ACData.Template({
@@ -110,5 +110,5 @@
                     document.body.appendChild(adaptiveCard.render());
                 });
     </script>
-    Hiho
+    Hoho
 </body>
