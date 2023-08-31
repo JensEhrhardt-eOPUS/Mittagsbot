@@ -6,9 +6,21 @@ on:
 
 jobs:
   test_job:
-    runs-on: ubuntu-latest
+#    runs-on: ubuntu-latest
+#    steps:
+#    - run: 
+#        git clone https://github.com/JensEhrhardt-eOPUS/Mittagsbot.git;
+#        cd Mittagsbot;
+#        ls;
+    runs-on: node-latest
     steps:
-    - run: 
-        git clone https://github.com/JensEhrhardt-eOPUS/Mittagsbot.git;
-        cd Mittagsbot;
-        ls;
+    - run: |
+        const https = require('https');
+        const request = http.get("https://shop.meyer-menue.de/api/v1/menue/NTYxMjA2/year/2023/week/43", function(response) {
+          console.log('STATUS: ' + res.statusCode);
+          console.log('HEADERS: ' + JSON.stringify(res.headers));
+          res.setEncoding('utf8');
+          res.on('data', function (chunk) {
+            console.log('BODY: ' + chunk);
+          });
+        }).end();
