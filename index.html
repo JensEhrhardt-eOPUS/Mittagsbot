@@ -3,15 +3,17 @@
 </head>
 <body>
     <script>
-        year = moment().isoWeekYear();
-        week = moment().isoWeek();
+        var year = moment().isoWeekYear();
+        var week = moment().isoWeek();
         fetch('https://shop.meyer-menue.de/api/v1/menue/MDI5ODM3/year/'+year+'/week/'+week)
             .then(response => response.json())
             .then(data => 
                 {
                     for(var item of data)
                         item.description = item.description?.replace(/{.*}/, '');
-                    
+                    var elem = document.createElement('div');
+                    elem.textContent = data;
+                    document.body.appendChild(elem);
                 });
     </script>
     Hoho
