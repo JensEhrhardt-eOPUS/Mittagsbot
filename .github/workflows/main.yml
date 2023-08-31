@@ -11,6 +11,8 @@ jobs:
     - env:
         GIT_AUTHOR_NAME: github_actions
         GIT_AUTHOR_EMAIL: a.b@c.de
+        GIT_COMMITTER_NAME: github_actions
+        GIT_COMMITTER_EMAIL: a.b@c.de
       run: 
         git clone https://github.com/JensEhrhardt-eOPUS/Mittagsbot.git;
         cd Mittagsbot;
