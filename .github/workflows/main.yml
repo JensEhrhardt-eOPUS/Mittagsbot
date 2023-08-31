@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: 
-        git clone https://github.com/JensEhrhardt-eOPUS/Mittagsbot.git
-        cd Mittagsbot
-        ls
+        git clone https://github.com/JensEhrhardt-eOPUS/Mittagsbot.git;
+        cd Mittagsbot;
+        ls;
