@@ -18,4 +18,4 @@ jobs:
         cd Mittagsbot;
         curl https://shop.meyer-menue.de/api/v1/menue/NTYxMjA2/year/2023/week/43 > data.json;
         git add data.json;
-        git commit;
+        git commit -m "data update";
