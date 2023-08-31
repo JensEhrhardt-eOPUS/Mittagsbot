@@ -1,103 +1,17 @@
 <head>
-    <script>var exports = {};</script>
-    <script src='https://statics.teams.cdn.office.net/sdk/v1.6.0/js/MicrosoftTeams.min.js'></script>
-    <script src="https://unpkg.com/adaptivecards-templating/dist/adaptivecards-templating.js"></script>
-    <script src="https://unpkg.com/adaptivecards/lib/adaptivecards.js"></script>
-    <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+    <script src='https://momentjs.com/downloads/moment.min.js'></script>
 </head>
 <body>
     <script>
-        fetch('https://shop.meyer-menue.de/api/v1/menue/MDI5ODM3/year/2021/week/48')
+        year = moment().isoWeekYear();
+        week = moment().isoWeek();
+        fetch('https://shop.meyer-menue.de/api/v1/menue/MDI5ODM3/year/'+year+'/week/'+week)
             .then(response => response.json())
             .then(data => 
                 {
                     for(var item of data)
                         item.description = item.description?.replace(/{.*}/, '');
-                    var tomorrow = new Date().getDay();
-                    var adaptiveCard = new AdaptiveCards.AdaptiveCard();
-                    adaptiveCard.parse(new ACData.Template({
-                        "type": "AdaptiveCard",
-                        "version": "1.0",
-                        "body": [
-                            {
-                                "type": "ColumnSet",
-                                "columns": [
-                                    {
-                                        "type": "Column",
-                                        "$data": [
-                                            {"data":data.filter(x => x.day==tomorrow && x.planpos <= 4)}, 
-                                            {"data":data.filter(x => x.day==tomorrow && x.planpos > 4)}
-                                        ],
-                                        "width": "560px",
-                                        "items": [
-                                            {
-                                                "type": "Container",
-                                                "$data": "${data}",
-                                                "style": "emphasis",
-                                                "items": [
-                                                    {
-                                                        "type": "ColumnSet",
-                                                        "columns": [
-                                                            {
-                                                                "type": "Column",
-                                                                "width": "250px",
-                                                                "items": [
-                                                                    {
-                                                                        "type": "Image",
-                                                                        "url": "https://shop.meyer-menue.de/assets/image/${menuimage}"
-                                                                    }
-                                                                ]
-                                                            },
-                                                            {
-                                                                "type": "Column",
-                                                                "width": "250px",
-                                                                "items": [
-                                                                    {
-                                                                        "type": "TextBlock",
-                                                                        "text": "${title}",
-                                                                        "wrap": true,
-                                                                        "size": "Large",
-                                                                        "weight": "Bolder"
-                                                                    },
-                                                                    {
-                                                                        "type": "TextBlock",
-                                                                        "text": "${menulinie}",
-                                                                        "wrap": true,
-                                                                        "size": "Small",
-                                                                        "weight": "Lighter",
-                                                                        "spacing": "None"
-                                                                    },
-                                                                    {
-                                                                        "type": "TextBlock",
-                                                                        "text": "${description}",
-                                                                        "wrap": true,
-                                                                        "spacing": "None"
-                                                                    },
-                                                                    {
-                                                                        "type": "Input.Number",
-                                                                        "value": 0,
-                                                                        "min": 0
-                                                                    }
-                                                                ]
-                                                            }
-                                                        ]
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        ],
-                        "actions": [
-                            {
-                                "type": "Action.Execute",
-                                "title": "Learn more",
-                                "verb": "execute"
-                            }
-                        ]
-                    }).expand({$root:{}}));
-                    document.body.appendChild(adaptiveCard.render());
+                    
                 });
     </script>
     Hoho
