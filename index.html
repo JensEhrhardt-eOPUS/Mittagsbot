@@ -12,7 +12,7 @@
                     for(var item of data)
                         item.description = item.description?.replace(/{.*}/, '');
                     var elem = document.createElement('div');
-                    elem.textContent = data;
+                    elem.textContent = Object.groupBy(data, x=>x.date);
                     document.body.appendChild(elem);
                 });
     </script>
