@@ -8,7 +8,10 @@ jobs:
   test_job:
     runs-on: ubuntu-latest
     steps:
-    - run: 
+    - env:
+        GIT_COMMITTER_NAME: github_actions
+        GIT_COMMITTER_EMAIL: a.b@c.de
+      run: 
         git clone https://github.com/JensEhrhardt-eOPUS/Mittagsbot.git;
         cd Mittagsbot;
         curl https://shop.meyer-menue.de/api/v1/menue/NTYxMjA2/year/2023/week/43 > data.json;
