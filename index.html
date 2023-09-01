@@ -36,7 +36,7 @@
             {
                 var items = Object.keys(list).map(x => [x, list[x]]).sort((a, b) => a[0].localeCompare(b[0]));
                 var count = 0;
-                for(var item in items)
+                for(var item of items)
                 {
                     var elem = document.createElement('div');
                     if(item[1] > 0)
