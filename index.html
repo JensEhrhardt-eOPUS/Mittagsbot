@@ -15,7 +15,7 @@
 
                     for(var item of data)
                     {
-                        list[item.date] = (list[item.date] ?? "") + item.amount;
+                        list[item.date] += item.amount;
                     }
 
                     var elem = document.createElement('div');
