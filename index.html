@@ -4,7 +4,10 @@
 </head>
 <body>
     <script>
+        var query = new URLSearchParams(window.location.search);
         var today = new Date();
+        if(query.has('month'))
+            today.addMonths(query.get('month'));
         var year = 1900 + today.getYear();
         var month = today.getMonth();
         var elem = document.createElement('h1');
