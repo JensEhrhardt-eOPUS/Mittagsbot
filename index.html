@@ -1,10 +1,17 @@
 <head>
-    <script src='https://momentjs.com/downloads/moment.min.js'></script>
+    <script src='https://raw.githubusercontent.com/datejs/Datejs/master/build/date.js'></script>
 </head>
 <body>
     <script>
-        var year = moment().isoWeekYear();
-        var week = moment().isoWeek();
+        var today = new Date();
+        var firstDay = new Date(today.getYear(), today.getMonth(), 1);
+        var days = Date.getDaysInMonth(today.getYear(), today.getMonth());
+        for(let i = 0; i < days; i++)
+        {
+            console.log(firstDay.addDays(i));
+        }
+        var year = today.getYear();
+        var week = today.getISOWeek();
         var list = {};
         fetch('https://shop.meyer-menue.de/api/v1/menue/NTYxMjA2/year/'+year+'/week/'+week)
             .then(response => response.json())
@@ -15,7 +22,7 @@
 
                     for(var item of data)
                     {
-                        list[item.date] += item.amount;
+                        list[item.date] = (list[item.date] ?? 0) + item.amount;
                     }
 
                     var elem = document.createElement('div');
