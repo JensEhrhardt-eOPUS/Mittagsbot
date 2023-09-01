@@ -15,9 +15,9 @@
 
                     for(var item of data)
                     {
-                        list[item.date] += item.amount;
+                        list[item.date] = (list[item.date] ?? 0) + item.amount;
                     }
-                    
+
                     var elem = document.createElement('div');
                     elem.textContent = JSON.stringify(list);
                     document.body.appendChild(elem);
