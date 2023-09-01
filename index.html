@@ -1,5 +1,6 @@
 <head>
     <script src='date.js'></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <script>
@@ -45,7 +46,6 @@
                 for(var item of items)
                 {
                     var elem = document.createElement('div');
-                    elem.setAttribute('style', 'font-family: "Lucida Console"');
                     if(item[1].amount > 0)
                     {
                         count += item[1].amount - 4;
