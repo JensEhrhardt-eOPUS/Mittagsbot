@@ -8,13 +8,15 @@
         var month = today.getMonth();
         var days = Date.getDaysInMonth(today.getYear(), month);
         var week = 0;
+        var list = {};
+        var promises = [];
         for(let i = 1; i <= days; i++)
         {
             var day = new Date(year, month, i);
             if(day.getISOWeek() <= week)
                 continue;
             week = day.getISOWeek();
-            fetch('https://shop.meyer-menue.de/api/v1/menue/NTYxMjA2/year/'+year+'/week/'+week)
+            promises.push(fetch('https://shop.meyer-menue.de/api/v1/menue/NTYxMjA2/year/'+year+'/week/'+week)
                 .then(response => response.json())
                 .then(data => 
                     {
@@ -23,15 +25,20 @@
 
                         for(var item of data)
                         {
+                            console.log(item.date + ' ' + new Date(item.date));
                             list[item.date] = (list[item.date] ?? 0) + item.amount;
                         }
-
-                        var elem = document.createElement('div');
-                        elem.textContent = JSON.stringify(list);
-                        document.body.appendChild(elem);
-                    });
+                    }));
         }
-        var list = {};
+        Promise.all(promises)
+        .then(
+            x => 
+            {
+                var elem = document.createElement('div');
+                elem.textContent = JSON.stringify(list);
+                document.body.appendChild(elem);
+            }
+        );
     </script>
     Hoho
 </body>
