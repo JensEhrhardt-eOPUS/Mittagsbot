@@ -10,7 +10,7 @@
         {
             console.log(firstDay.addDays(i));
         }
-        var year = today.getYear();
+        var year = 1900 + today.getYear();
         var week = today.getISOWeek();
         var list = {};
         fetch('https://shop.meyer-menue.de/api/v1/menue/NTYxMjA2/year/'+year+'/week/'+week)
