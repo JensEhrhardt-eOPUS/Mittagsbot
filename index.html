@@ -13,6 +13,7 @@
             var day = new Date(year, month, i);
             if(day.getISOWeek() <= week)
                 continue;
+            week = day.getISOWeek();
             fetch('https://shop.meyer-menue.de/api/v1/menue/NTYxMjA2/year/'+year+'/week/'+week)
                 .then(response => response.json())
                 .then(data => 
