@@ -4,31 +4,33 @@
 <body>
     <script>
         var today = new Date();
-        var firstDay = new Date(today.getYear(), today.getMonth(), 1);
-        var days = Date.getDaysInMonth(today.getYear(), today.getMonth());
-        for(let i = 0; i < days; i++)
-        {
-            console.log(firstDay.addDays(1));
-        }
         var year = 1900 + today.getYear();
-        var week = today.getISOWeek();
-        var list = {};
-        fetch('https://shop.meyer-menue.de/api/v1/menue/NTYxMjA2/year/'+year+'/week/'+week)
-            .then(response => response.json())
-            .then(data => 
-                {
-                    for(var item of data)
-                        item.description = item.description?.replace(/{.*}/, '');
-
-                    for(var item of data)
+        var month = today.getMonth();
+        var days = Date.getDaysInMonth(today.getYear(), month);
+        var week = 0;
+        for(let i = 1; i <= days; i++)
+        {
+            var day = new Date(year, month, i);
+            if(day.getISOWeek() <= week)
+                continue;
+            fetch('https://shop.meyer-menue.de/api/v1/menue/NTYxMjA2/year/'+year+'/week/'+week)
+                .then(response => response.json())
+                .then(data => 
                     {
-                        list[item.date] = (list[item.date] ?? 0) + item.amount;
-                    }
+                        for(var item of data)
+                            item.description = item.description?.replace(/{.*}/, '');
 
-                    var elem = document.createElement('div');
-                    elem.textContent = JSON.stringify(list);
-                    document.body.appendChild(elem);
-                });
+                        for(var item of data)
+                        {
+                            list[item.date] = (list[item.date] ?? 0) + item.amount;
+                        }
+
+                        var elem = document.createElement('div');
+                        elem.textContent = JSON.stringify(list);
+                        document.body.appendChild(elem);
+                    });
+        }
+        var list = {};
     </script>
     Hoho
 </body>
