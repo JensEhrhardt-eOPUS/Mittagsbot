@@ -5,14 +5,21 @@
     <script>
         var year = moment().isoWeekYear();
         var week = moment().isoWeek();
+        var list = {};
         fetch('https://shop.meyer-menue.de/api/v1/menue/MDI5ODM3/year/'+year+'/week/'+week)
             .then(response => response.json())
             .then(data => 
                 {
                     for(var item of data)
                         item.description = item.description?.replace(/{.*}/, '');
+
+                    for(var item of data)
+                    {
+                        list[item.date] += item.amount;
+                    }
+                    
                     var elem = document.createElement('div');
-                    elem.textContent = Object.groupBy(data, x=>x.date);
+                    elem.textContent = JSON.stringify(list);
                     document.body.appendChild(elem);
                 });
     </script>
