@@ -25,8 +25,8 @@
 
                         for(var item of data)
                         {
-                            console.log(item.date + ' ' + new Date(item.date));
-                            list[item.date] = (list[item.date] ?? 0) + item.amount;
+                            if(new Date(item.date).getMonth()==month)
+                                list[item.date] = (list[item.date] ?? 0) + item.amount;
                         }
                     }));
         }
@@ -34,8 +34,9 @@
         .then(
             x => 
             {
+                var items = Object.keys(list).map(x => [x, list[x]]).sort((a, b) => a[0].localeCompare(b[0]));
                 var elem = document.createElement('div');
-                elem.textContent = JSON.stringify(list);
+                elem.textContent = JSON.stringify(items);
                 document.body.appendChild(elem);
             }
         );
