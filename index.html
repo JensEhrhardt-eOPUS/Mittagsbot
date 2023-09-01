@@ -25,8 +25,14 @@
 
                         for(var item of data)
                         {
-                            if(new Date(item.date).getMonth()==month)
-                                list[item.date] = (list[item.date] ?? 0) + item.amount;
+                            if(new Date(item.date).getMonth() == month)
+                            {
+                                var tmp = list[item.date] ?? { amount: 0, orders: ''};
+                                tmp.amount += item.amount;
+                                if(item.amount > 0)
+                                    tmp.orders += item.amount + 'x ' + item.title + ', ';
+                                list[item.date] = tmp;
+                            }
                         }
                     }));
         }
@@ -39,11 +45,11 @@
                 for(var item of items)
                 {
                     var elem = document.createElement('div');
-                    if(item[1] > 0)
+                    if(item[1].amount > 0)
                     {
-                        count += item[1] - 4;
+                        count += item[1].amount - 4;
                     }
-                    elem.textContent = item[0] + ': ' + item[1] + ' (' + (count < 0 ? count : '+' + count) + ')';
+                    elem.textContent = item[0] + ' ' + new Date(item[0]).toString('ddd') + ' (' + item[1].amount + ') (' + (count < 0 ? count : '+' + count) + '): ' + item[1].orders;
                     document.body.appendChild(elem);
                 }
             }
