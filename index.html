@@ -7,6 +7,9 @@
         var today = new Date();
         var year = 1900 + today.getYear();
         var month = today.getMonth();
+        var elem = document.createElement('h1');
+        elem.textContent = today.toString('MMMM yyyy');
+        document.body.appendChild(elem);
         var days = Date.getDaysInMonth(today.getYear(), month);
         var week = 0;
         var list = {};
@@ -45,7 +48,7 @@
                 var count = 0;
                 for(var item of items)
                 {
-                    var elem = document.createElement('div');
+                    elem = document.createElement('div');
                     if(item[1].amount > 0)
                     {
                         count += item[1].amount - 4;
@@ -56,5 +59,4 @@
             }
         );
     </script>
-    <h1>Meyer-Menü</h1>
 </body>
