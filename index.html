@@ -35,9 +35,17 @@
             x => 
             {
                 var items = Object.keys(list).map(x => [x, list[x]]).sort((a, b) => a[0].localeCompare(b[0]));
-                var elem = document.createElement('div');
-                elem.textContent = JSON.stringify(items);
-                document.body.appendChild(elem);
+                var count = 0;
+                for(var item in items)
+                {
+                    var elem = document.createElement('div');
+                    if(item[1] > 0)
+                    {
+                        count += item[1] - 4;
+                    }
+                    elem.textContent = item[0] + ': ' + item[1] + ' (' + (count < 0 ? count : '+' + count) + ')';
+                    document.body.appendChild(elem);
+                }
             }
         );
     </script>
