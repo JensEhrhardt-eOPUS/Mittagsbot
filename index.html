@@ -6,12 +6,14 @@
     <script>
         var query = new URLSearchParams(window.location.search);
         var today = new Date();
+        var monthOffset = 0;
         if(query.has('month'))
-            today.addMonths(parseInt(query.get('month')));
+            monthOffset = parseInt(query.get('month'));
+        today.addMonths(monthOffset);
         var year = 1900 + today.getYear();
         var month = today.getMonth();
         var elem = document.createElement('h1');
-        elem.textContent = today.toString('MMMM yyyy');
+        elem.innerHTML = '<a href=index.html?month=' + (monthOffset - 1) + '>&lt;</a>' + today.toString('MMMM yyyy') + '<a href=index.html?month=' + (monthOffset + 1) + '>&gt;</a>';
         document.body.appendChild(elem);
         var days = Date.getDaysInMonth(today.getYear(), month);
         var week = 0;
