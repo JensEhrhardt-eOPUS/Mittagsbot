@@ -13,7 +13,7 @@
         var year = 1900 + today.getYear();
         var month = today.getMonth();
         var elem = document.createElement('h1');
-        elem.innerHTML = '<a href=index.html?month=' + (monthOffset - 1) + '>&lt;</a>' + today.toString('MMMM yyyy') + '<a href=index.html?month=' + (monthOffset + 1) + '>&gt;</a>';
+        elem.innerHTML = '<a href=index.html?month=' + (monthOffset - 1) + '>&lt;</a>&nbsp;' + today.toString('MMMM yyyy') + '&nbsp;<a href=index.html?month=' + (monthOffset + 1) + '>&gt;</a>';
         document.body.appendChild(elem);
         var days = Date.getDaysInMonth(today.getYear(), month);
         var week = 0;

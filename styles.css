@@ -3,3 +3,7 @@
     color: lightgray;
     font-family: "Lucida Console"
 }
+a {
+    color: lightblue;
+    text-decoration: none;
+}
