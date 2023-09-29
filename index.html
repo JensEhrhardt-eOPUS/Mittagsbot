@@ -36,10 +36,11 @@
                         {
                             if(new Date(item.date).getMonth() == month)
                             {
-                                var tmp = list[item.date] ?? { amount: 0, orders: ''};
+                                var tmp = list[item.date] ?? { amount: 0, orders: '', tirolerSalat: false };
                                 tmp.amount += item.amount;
                                 if(item.amount > 0)
                                     tmp.orders += item.amount + 'x ' + item.title + ', ';
+                                tmp.tirolerSalat |= item.title == 'Salat Tiroler Art';
                                 list[item.date] = tmp;
                             }
                         }
@@ -58,7 +59,7 @@
                     {
                         count += item[1].amount - 4;
                     }
-                    elem.textContent = item[0] + ' ' + new Date(item[0]).toString('ddd') + ' (' + item[1].amount + ') (' + (count < 0 ? count : '+' + count) + '): ' + item[1].orders;
+                    elem.textContent = item[0] + ' ' + new Date(item[0]).toString('ddd') + ' (' + item[1].amount + ') (' + (count < 0 ? count : '+' + count) + ')' + (item[1].tirolerSalat ? '*' : '') + ': ' + item[1].orders;
                     document.body.appendChild(elem);
                 }
             }
