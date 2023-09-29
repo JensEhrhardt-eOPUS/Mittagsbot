@@ -59,7 +59,7 @@
                     {
                         count += item[1].amount - 4;
                     }
-                    elem.textContent = item[0] + ' ' + new Date(item[0]).toString('ddd') + ' (' + item[1].amount + ') (' + (count < 0 ? count : '+' + count) + ')' + (item[1].tirolerSalat ? '*' : '') + ': ' + item[1].orders;
+                    elem.textContent = item[0] + ' ' + new Date(item[0]).toString('ddd') + ' (' + item[1].amount + ') (' + (count < 0 ? count : '+' + count) + ')' + (item[1].tirolerSalat ? '*' : ' ') + ': ' + item[1].orders;
                     document.body.appendChild(elem);
                 }
             }
