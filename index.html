@@ -25,7 +25,10 @@
             if(day.getISOWeek() <= week)
                 continue;
             week = day.getISOWeek();
-            promises.push(fetch('https://shop.meyer-menue.de/api/v1/menue/NTYxMjA2/year/'+year+'/week/'+week)
+            var isoYear = year;
+            if(month == 1 && week >= 50)
+                isoYear = year - 1;
+            promises.push(fetch('https://shop.meyer-menue.de/api/v1/menue/NTYxMjA2/year/'+isoYear+'/week/'+week)
                 .then(response => response.json())
                 .then(data => 
                     {
