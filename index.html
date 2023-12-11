@@ -26,7 +26,7 @@
                 continue;
             week = day.getISOWeek();
             var isoYear = year;
-            if(month == 1 && week >= 50)
+            if(month == 0 && week >= 50)
                 isoYear = year - 1;
             promises.push(fetch('https://shop.meyer-menue.de/api/v1/menue/NTYxMjA2/year/'+isoYear+'/week/'+week)
                 .then(response => response.json())
