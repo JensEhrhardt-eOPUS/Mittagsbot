@@ -24,7 +24,7 @@
             var day = new Date(year, month, i);
             if(day.getISOWeek() <= week)
                 continue;
-            week = day.getISOWeek();
+            week = day.getWeek();
             var isoYear = year;
             if(month == 0 && week >= 50)
                 isoYear = year - 1;
