@@ -22,7 +22,7 @@
         for(let i = 1; i <= days; i++)
         {
             var day = new Date(year, month, i);
-            if(day.getISOWeek() <= week)
+            if(day.getWeek() <= week)
                 continue;
             week = day.getWeek();
             var isoYear = year;
