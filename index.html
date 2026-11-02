@@ -37,7 +37,7 @@
 
                         for(var item of data)
                         {
-                            if(new new Date(item.date.replace(' 12:00:00:AM','')).getMonth() == month)
+                            if(new Date(item.date.replace(' 12:00:00:AM','')).getMonth() == month)
                             {
                                 var tmp = list[item.date] ?? { amount: 0, orders: '', tirolerSalat: false };
                                 tmp.amount += item.amount;
