@@ -33,11 +33,14 @@
                 .then(data => 
                     {
                         for(var item of data)
+                        {
                             item.description = item.description?.replace(/{.*}/, '');
+                            item.date = item.date.replace(' 12:00:00:AM','')
+                        }
 
                         for(var item of data)
                         {
-                            if(new Date(item.date.replace(' 12:00:00:AM','')).getMonth() == month)
+                            if(new Date(item.date).getMonth() == month)
                             {
                                 var tmp = list[item.date] ?? { amount: 0, orders: '', tirolerSalat: false };
                                 tmp.amount += item.amount;
@@ -62,7 +65,7 @@
                     {
                         count += item[1].amount - 4;
                     }
-                    elem.textContent = item[0] + ' ' + new Date(item[0].replace(' 12:00:00:AM','')).toString('ddd') + ' (' + item[1].amount + ') (' + (count < 0 ? count : '+' + count) + ')' + (item[1].tirolerSalat ? '*' : ' ') + ': ' + item[1].orders;
+                    elem.textContent = item[0] + ' ' + new Date(item[0]).toString('ddd') + ' (' + item[1].amount + ') (' + (count < 0 ? count : '+' + count) + ')' + (item[1].tirolerSalat ? '*' : ' ') + ': ' + item[1].orders;
                     document.body.appendChild(elem);
                 }
             }
